@@ -32,5 +32,26 @@ schema.methods.toJSON = function () {
 
   return obj
 }
+export const UserSwaggerSchema = {
+  type: 'object',
+  properties: {
+    email: {
+      type: 'string',
+      description: 'User email'
+    },
+    firstName: {
+      type: 'string',
+      description: 'User first name'
+    },
+    lastName: {
+      type: 'string',
+      description: 'User last name'
+    },
+    verified: {
+      type: 'boolean',
+      description: 'User verification status'
+    }
+  }
+}
 
 export const User = model<IUser, UserModel>('User', schema)

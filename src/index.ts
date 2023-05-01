@@ -11,11 +11,17 @@ import {
 } from '@/middlewares'
 import { router } from '@/routes'
 import { i18next, i18nextHttpMiddleware } from '@/i18n'
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerConfig from './configs/swaggerConfig'
+import swaggerUi from 'swagger-ui-express'
 
 mongoose.run()
 redis.run()
 
 const app: Express = express()
+const specs = swaggerJsdoc(swaggerConfig)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 app.use(
   join('/', process.env.STORAGE_PATH as string),
