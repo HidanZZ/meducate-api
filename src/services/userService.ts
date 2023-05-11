@@ -5,19 +5,43 @@ import { User } from '@/models'
 export const userService = {
   create: (
     {
+      title,
+      firstName,
+      lastName,
       email,
       password,
+      phoneNumber,
+      country,
+      city,
+      postalCode,
+      highestQualification,
       verified = false
     }: {
+      title: string
+      firstName: string
+      lastName: string
       email: string
       password: string
+      phoneNumber: string
+      country: string
+      city: string
+      postalCode: string
+      highestQualification: string
       verified?: boolean
     },
     session?: ClientSession
   ) =>
     new User({
+      title,
+      firstName,
+      lastName,
       email,
       password,
+      phoneNumber,
+      country,
+      city,
+      postalCode,
+      highestQualification,
       verified
     }).save({ session }),
 

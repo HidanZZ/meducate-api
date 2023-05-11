@@ -62,7 +62,20 @@ export const authController = {
   },
 
   signUp: async (
-    { body: { email, password } }: IBodyRequest<SignUpPayload>,
+    {
+      body: {
+        title,
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber,
+        country,
+        city,
+        postalCode,
+        highestQualification
+      }
+    }: IBodyRequest<SignUpPayload>,
     res: Response
   ) => {
     const session = await startSession()
@@ -83,8 +96,16 @@ export const authController = {
 
       const user = await userService.create(
         {
+          title,
+          firstName,
+          lastName,
           email,
-          password: hashedPassword
+          password: hashedPassword,
+          phoneNumber,
+          country,
+          city,
+          postalCode,
+          highestQualification
         },
         session
       )
@@ -92,7 +113,7 @@ export const authController = {
       const cryptoString = createCryptoString()
 
       const dateFromNow = createDateAddDaysFromNow(ExpiresInDays.Verification)
-
+      winston.info(`verification : ${cryptoString}`)
       const verification = await verificationService.create(
         {
           userId: user.id,

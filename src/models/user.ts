@@ -5,14 +5,34 @@ import { IUser, IUserMethods, UserModel } from '@/contracts/user'
 
 const schema = new Schema<IUser, UserModel, IUserMethods>(
   {
-    email: String,
-    password: String,
+    title: { type: String, enum: ['Mr', 'Mrs', 'Dr', 'Prof'] },
     firstName: String,
     lastName: String,
-    verified: {
-      type: Boolean,
-      default: false
+    email: String,
+    password: String,
+    phoneNumber: String,
+    country: String,
+    city: String,
+    postalCode: String,
+    highestQualification: {
+      type: String,
+      enum: ['PhD', 'Master', 'Certificate', 'Other']
     },
+    profile: {
+      type: String,
+      enum: ['Doctor', 'Pharmacist', 'Nurse', 'Patient', 'MedicalStudent'],
+      required: false
+    },
+    specialty: { type: String, required: false },
+    yearsOfExperience: { type: Number, required: false },
+    sector: { type: String, enum: ['Public', 'Private'], required: false },
+    workEnvironment: {
+      type: String,
+      enum: ['Hospital', 'Clinic', 'PrivatePractice', 'Home'],
+      required: false
+    },
+    institution: { type: String, required: false },
+    verified: { type: Boolean, default: false },
     verifications: [{ type: Schema.Types.ObjectId, ref: 'Verification' }],
     resetPasswords: [{ type: Schema.Types.ObjectId, ref: 'ResetPassword' }]
   },
@@ -35,22 +55,34 @@ schema.methods.toJSON = function () {
 export const UserSwaggerSchema = {
   type: 'object',
   properties: {
-    email: {
+    title: { type: 'string', enum: ['Mr', 'Mrs', 'Dr', 'Prof'] },
+    firstName: { type: 'string' },
+    lastName: { type: 'string' },
+    email: { type: 'string' },
+    password: { type: 'string' },
+    phoneNumber: { type: 'string' },
+    country: { type: 'string' },
+    city: { type: 'string' },
+    postalCode: { type: 'string' },
+    highestQualification: {
       type: 'string',
-      description: 'User email'
+      enum: ['PhD', 'Master', 'Certificate', 'Other']
     },
-    firstName: {
+    profile: {
       type: 'string',
-      description: 'User first name'
+      enum: ['Doctor', 'Pharmacist', 'Nurse', 'Patient', 'MedicalStudent'],
+      required: false
     },
-    lastName: {
+    specialty: { type: 'string', required: false },
+    yearsOfExperience: { type: 'number', required: false },
+    sector: { type: 'string', enum: ['Public', 'Private'], required: false },
+    workEnvironment: {
       type: 'string',
-      description: 'User last name'
+      enum: ['Hospital', 'Clinic', 'PrivatePractice', 'Home'],
+      required: false
     },
-    verified: {
-      type: 'boolean',
-      description: 'User verification status'
-    }
+    institution: { type: 'string', required: false },
+    verified: { type: 'boolean', default: false }
   }
 }
 
