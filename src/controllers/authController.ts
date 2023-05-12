@@ -72,8 +72,12 @@ export const authController = {
         phoneNumber,
         country,
         city,
-        postalCode,
-        highestQualification
+        highestQualification,
+        profile,
+        speciality,
+        yearsOfExperience,
+        sector,
+        workEnvironment
       }
     }: IBodyRequest<SignUpPayload>,
     res: Response
@@ -104,8 +108,12 @@ export const authController = {
           phoneNumber,
           country,
           city,
-          postalCode,
-          highestQualification
+          highestQualification,
+          profile,
+          speciality,
+          yearsOfExperience,
+          sector,
+          workEnvironment
         },
         session
       )

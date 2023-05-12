@@ -47,7 +47,7 @@ export const auth = (router: Router): void => {
    * /auth/sign-up:
    *   post:
    *     summary: Sign up a new user
-   *     description: Registers a new user with email and password
+   *     description: Registers a new user with detailed information
    *     tags:
    *       - Authentication
    *     requestBody:
@@ -57,20 +57,54 @@ export const auth = (router: Router): void => {
    *           schema:
    *             type: object
    *             properties:
+   *               title:
+   *                 type: string
+   *               firstName:
+   *                 type: string
+   *               lastName:
+   *                 type: string
    *               email:
    *                 type: string
    *                 format: email
    *               password:
    *                 type: string
+   *               phoneNumber:
+   *                 type: string
+   *               country:
+   *                 type: string
+   *               city:
+   *                 type: string
+   *               highestQualification:
+   *                 type: string
+   *               profile:
+   *                 type: string
+   *               speciality:
+   *                 type: string
+   *               yearsOfExperience:
+   *                 type: integer
+   *               sector:
+   *                 type: string
+   *               workEnvironment:
+   *                 type: string
+   *               verified:
+   *                 type: boolean
    *             required:
+   *               - title
+   *               - firstName
+   *               - lastName
    *               - email
    *               - password
+   *               - phoneNumber
+   *               - country
+   *               - city
+   *               - highestQualification
    *     responses:
    *       201:
    *         description: User signed up successfully
    *       400:
    *         description: Bad request
    */
+
   router.post(
     '/auth/sign-up',
     authGuard.isGuest,

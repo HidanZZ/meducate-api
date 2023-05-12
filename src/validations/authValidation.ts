@@ -69,8 +69,12 @@ export const authValidation = {
         phoneNumber,
         country,
         city,
-        postalCode,
-        highestQualification
+        highestQualification,
+        profile,
+        speciality,
+        yearsOfExperience,
+        sector,
+        workEnvironment
       } = req.body
 
       if (
@@ -82,8 +86,12 @@ export const authValidation = {
         !phoneNumber ||
         !country ||
         !city ||
-        !postalCode ||
         !highestQualification ||
+        !profile ||
+        !speciality ||
+        !yearsOfExperience ||
+        !sector ||
+        !workEnvironment ||
         !validator.isLength(password, { min: 6, max: 48 })
       ) {
         return res.status(StatusCodes.BAD_REQUEST).json({

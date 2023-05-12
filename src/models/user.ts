@@ -13,7 +13,7 @@ const schema = new Schema<IUser, UserModel, IUserMethods>(
     phoneNumber: String,
     country: String,
     city: String,
-    postalCode: String,
+    // postalCode: String,
     highestQualification: {
       type: String,
       enum: ['PhD', 'Master', 'Certificate', 'Other']
@@ -23,7 +23,7 @@ const schema = new Schema<IUser, UserModel, IUserMethods>(
       enum: ['Doctor', 'Pharmacist', 'Nurse', 'Patient', 'MedicalStudent'],
       required: false
     },
-    specialty: { type: String, required: false },
+    speciality: { type: String, required: false },
     yearsOfExperience: { type: Number, required: false },
     sector: { type: String, enum: ['Public', 'Private'], required: false },
     workEnvironment: {
@@ -63,7 +63,7 @@ export const UserSwaggerSchema = {
     phoneNumber: { type: 'string' },
     country: { type: 'string' },
     city: { type: 'string' },
-    postalCode: { type: 'string' },
+    // postalCode: { type: 'string' },
     highestQualification: {
       type: 'string',
       enum: ['PhD', 'Master', 'Certificate', 'Other']
@@ -73,7 +73,7 @@ export const UserSwaggerSchema = {
       enum: ['Doctor', 'Pharmacist', 'Nurse', 'Patient', 'MedicalStudent'],
       required: false
     },
-    specialty: { type: 'string', required: false },
+    speciality: { type: 'string', required: false },
     yearsOfExperience: { type: 'number', required: false },
     sector: { type: 'string', enum: ['Public', 'Private'], required: false },
     workEnvironment: {

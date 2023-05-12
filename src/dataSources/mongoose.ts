@@ -6,7 +6,7 @@ export const mongoose = {
     try {
       return await connect(process.env.MONGODB_URI)
     } catch (error) {
-      winston.error('Mongoose connection error')
+      winston.error('Mongoose connection error: ', error)
     }
   },
 

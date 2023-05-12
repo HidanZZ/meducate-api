@@ -23,10 +23,9 @@ export interface IUser {
   phoneNumber: string
   country: string
   city: string
-  postalCode: string
   highestQualification: 'PhD' | 'Master' | 'Certificate' | 'Other'
   profile?: 'Doctor' | 'Pharmacist' | 'Nurse' | 'Patient' | 'MedicalStudent'
-  specialty?: string
+  speciality?: string
   yearsOfExperience?: number
   sector?: 'Public' | 'Private'
   workEnvironment?: 'Hospital' | 'Clinic' | 'PrivatePractice' | 'Home'

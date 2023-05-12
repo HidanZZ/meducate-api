@@ -12,8 +12,12 @@ export type SignUpPayload = Pick<
   | 'phoneNumber'
   | 'country'
   | 'city'
-  | 'postalCode'
   | 'highestQualification'
+  | 'profile'
+  | 'speciality'
+  | 'yearsOfExperience'
+  | 'sector'
+  | 'workEnvironment'
 >
 
 export type ResetPasswordPayload = Pick<IUser, 'email'>

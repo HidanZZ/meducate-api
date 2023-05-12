@@ -13,8 +13,13 @@ export const userService = {
       phoneNumber,
       country,
       city,
-      postalCode,
       highestQualification,
+      profile,
+      speciality,
+      yearsOfExperience,
+      sector,
+      workEnvironment,
+
       verified = false
     }: {
       title: string
@@ -25,8 +30,12 @@ export const userService = {
       phoneNumber: string
       country: string
       city: string
-      postalCode: string
       highestQualification: string
+      profile?: string
+      speciality?: string
+      yearsOfExperience?: number
+      sector?: string
+      workEnvironment?: string
       verified?: boolean
     },
     session?: ClientSession
@@ -40,8 +49,12 @@ export const userService = {
       phoneNumber,
       country,
       city,
-      postalCode,
       highestQualification,
+      profile,
+      speciality,
+      yearsOfExperience,
+      sector,
+      workEnvironment,
       verified
     }).save({ session }),
 
