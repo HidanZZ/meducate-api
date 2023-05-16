@@ -9,7 +9,7 @@ export type SignUpPayload = Pick<
   | 'lastName'
   | 'email'
   | 'password'
-  | 'phoneNumber'
+  | 'phone'
   | 'country'
   | 'city'
   | 'highestQualification'

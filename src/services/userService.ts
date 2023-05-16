@@ -10,7 +10,7 @@ export const userService = {
       lastName,
       email,
       password,
-      phoneNumber,
+      phone,
       country,
       city,
       highestQualification,
@@ -27,13 +27,13 @@ export const userService = {
       lastName: string
       email: string
       password: string
-      phoneNumber: string
+      phone: string
       country: string
       city: string
       highestQualification: string
       profile?: string
       speciality?: string
-      yearsOfExperience?: number
+      yearsOfExperience?: string
       sector?: string
       workEnvironment?: string
       verified?: boolean
@@ -46,7 +46,7 @@ export const userService = {
       lastName,
       email,
       password,
-      phoneNumber,
+      phone,
       country,
       city,
       highestQualification,

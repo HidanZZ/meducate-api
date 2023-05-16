@@ -66,15 +66,11 @@ export const authValidation = {
         lastName,
         email,
         password,
-        phoneNumber,
+        phone,
         country,
         city,
         highestQualification,
-        profile,
-        speciality,
-        yearsOfExperience,
-        sector,
-        workEnvironment
+        yearsOfExperience
       } = req.body
 
       if (
@@ -83,15 +79,10 @@ export const authValidation = {
         !lastName ||
         !email ||
         !password ||
-        !phoneNumber ||
+        !phone ||
         !country ||
         !city ||
         !highestQualification ||
-        !profile ||
-        !speciality ||
-        !yearsOfExperience ||
-        !sector ||
-        !workEnvironment ||
         !validator.isLength(password, { min: 6, max: 48 })
       ) {
         return res.status(StatusCodes.BAD_REQUEST).json({
@@ -115,8 +106,13 @@ export const authValidation = {
         })
       }
 
-      // Add any additional validations for the new fields here.
-      // For example, you can validate the length of the firstName and lastName:
+      //check if year of experience is a number
+      if (yearsOfExperience && !validator.isNumeric(yearsOfExperience)) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: ReasonPhrases.BAD_REQUEST,
+          status: StatusCodes.BAD_REQUEST
+        })
+      }
       if (
         !validator.isLength(firstName, { min: 1, max: 50 }) ||
         !validator.isLength(lastName, { min: 1, max: 50 })
@@ -127,8 +123,8 @@ export const authValidation = {
         })
       }
 
-      // Validate phoneNumber format if needed, for example with E.164 format:
-      // if (!validator.isMobilePhone(phoneNumber, 'any', { strictMode: true })) {
+      // Validate phone format if needed, for example with E.164 format:
+      // if (!validator.isMobilePhone(phone, 'any', { strictMode: true })) {
       //   return res.status(StatusCodes.BAD_REQUEST).json({
       //     message: ReasonPhrases.BAD_REQUEST,
       //     status: StatusCodes.BAD_REQUEST

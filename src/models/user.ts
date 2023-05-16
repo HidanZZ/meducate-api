@@ -10,13 +10,13 @@ const schema = new Schema<IUser, UserModel, IUserMethods>(
     lastName: String,
     email: String,
     password: String,
-    phoneNumber: String,
+    phone: String,
     country: String,
     city: String,
     // postalCode: String,
     highestQualification: {
       type: String,
-      enum: ['PhD', 'Master', 'Certificate', 'Other']
+      enum: ['PhD', 'Masters', 'Certificate', 'Other']
     },
     profile: {
       type: String,
@@ -60,13 +60,13 @@ export const UserSwaggerSchema = {
     lastName: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
-    phoneNumber: { type: 'string' },
+    phone: { type: 'string' },
     country: { type: 'string' },
     city: { type: 'string' },
     // postalCode: { type: 'string' },
     highestQualification: {
       type: 'string',
-      enum: ['PhD', 'Master', 'Certificate', 'Other']
+      enum: ['PhD', 'Masters', 'Certificate', 'Other']
     },
     profile: {
       type: 'string',

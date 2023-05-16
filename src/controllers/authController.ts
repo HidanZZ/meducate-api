@@ -69,7 +69,7 @@ export const authController = {
         lastName,
         email,
         password,
-        phoneNumber,
+        phone,
         country,
         city,
         highestQualification,
@@ -105,7 +105,7 @@ export const authController = {
           lastName,
           email,
           password: hashedPassword,
-          phoneNumber,
+          phone,
           country,
           city,
           highestQualification,
@@ -140,8 +140,6 @@ export const authController = {
         session
       )
 
-      const { accessToken } = jwtSign(user.id)
-
       const userMail = new UserMail()
 
       userMail.signUp({
@@ -157,7 +155,7 @@ export const authController = {
       session.endSession()
 
       return res.status(StatusCodes.OK).json({
-        data: { accessToken },
+        // data: { accessToken },
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })

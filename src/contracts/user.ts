@@ -20,13 +20,13 @@ export interface IUser {
   lastName: string
   email: string
   password: string
-  phoneNumber: string
+  phone: string
   country: string
   city: string
-  highestQualification: 'PhD' | 'Master' | 'Certificate' | 'Other'
+  highestQualification: 'PhD' | 'Masters' | 'Certificate' | 'Other'
   profile?: 'Doctor' | 'Pharmacist' | 'Nurse' | 'Patient' | 'MedicalStudent'
   speciality?: string
-  yearsOfExperience?: number
+  yearsOfExperience?: string
   sector?: 'Public' | 'Private'
   workEnvironment?: 'Hospital' | 'Clinic' | 'PrivatePractice' | 'Home'
   institution?: string

@@ -68,7 +68,7 @@ export const auth = (router: Router): void => {
    *                 format: email
    *               password:
    *                 type: string
-   *               phoneNumber:
+   *               phone:
    *                 type: string
    *               country:
    *                 type: string
@@ -94,7 +94,7 @@ export const auth = (router: Router): void => {
    *               - lastName
    *               - email
    *               - password
-   *               - phoneNumber
+   *               - phone
    *               - country
    *               - city
    *               - highestQualification
