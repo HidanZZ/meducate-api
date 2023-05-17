@@ -43,6 +43,12 @@ export const authController = {
           status: StatusCodes.NOT_FOUND
         })
       }
+      if (!user.verified) {
+        return res.status(StatusCodes.FORBIDDEN).json({
+          message: ReasonPhrases.FORBIDDEN,
+          status: StatusCodes.FORBIDDEN
+        })
+      }
 
       const { accessToken } = jwtSign(user.id)
 
@@ -156,6 +162,7 @@ export const authController = {
 
       return res.status(StatusCodes.OK).json({
         // data: { accessToken },
+        email: user.email,
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })
