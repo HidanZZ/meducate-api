@@ -53,7 +53,7 @@ export const authController = {
       const { accessToken } = jwtSign(user.id)
 
       return res.status(StatusCodes.OK).json({
-        data: { accessToken },
+        data: { accessToken, user },
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })
