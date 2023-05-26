@@ -34,8 +34,6 @@ export const users = (router: Router): void => {
    *     description: Requests an email verification for the authenticated user
    *     tags:
    *       - Users
-   *     security:
-   *       - BearerAuth: []
    *     requestBody:
    *       required: true
    *       content:
@@ -58,7 +56,7 @@ export const users = (router: Router): void => {
    */
   router.post(
     '/user/verification/request',
-    authGuard.isAuth,
+    authGuard.isGuest,
     userValidation.verificationRequest,
     userController.verificationRequest
   )

@@ -15,10 +15,21 @@ export interface IResetPassword {
 
 export interface IUser {
   id: ObjectId
+  title: 'Mr' | 'Mrs' | 'Dr' | 'Prof'
+  firstName: string
+  lastName: string
   email: string
   password: string
-  firstName?: string
-  lastName?: string
+  phone: string
+  country: string
+  city: string
+  highestQualification: 'PhD' | 'Masters' | 'Certificate' | 'Other'
+  profile?: 'Doctor' | 'Pharmacist' | 'Nurse' | 'Patient' | 'MedicalStudent'
+  speciality?: string
+  yearsOfExperience?: string
+  sector?: 'Public' | 'Private'
+  workEnvironment?: 'Hospital' | 'Clinic' | 'PrivatePractice' | 'Home'
+  institution?: string
   verified: boolean
   verifications?: ObjectId[]
   resetPasswords?: ObjectId[]

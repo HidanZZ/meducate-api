@@ -43,11 +43,17 @@ export const authController = {
           status: StatusCodes.NOT_FOUND
         })
       }
+      if (!user.verified) {
+        return res.status(StatusCodes.FORBIDDEN).json({
+          message: ReasonPhrases.FORBIDDEN,
+          status: StatusCodes.FORBIDDEN
+        })
+      }
 
       const { accessToken } = jwtSign(user.id)
 
       return res.status(StatusCodes.OK).json({
-        data: { accessToken },
+        data: { accessToken, user },
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })
@@ -62,7 +68,24 @@ export const authController = {
   },
 
   signUp: async (
-    { body: { email, password } }: IBodyRequest<SignUpPayload>,
+    {
+      body: {
+        title,
+        firstName,
+        lastName,
+        email,
+        password,
+        phone,
+        country,
+        city,
+        highestQualification,
+        profile,
+        speciality,
+        yearsOfExperience,
+        sector,
+        workEnvironment
+      }
+    }: IBodyRequest<SignUpPayload>,
     res: Response
   ) => {
     const session = await startSession()
@@ -83,8 +106,20 @@ export const authController = {
 
       const user = await userService.create(
         {
+          title,
+          firstName,
+          lastName,
           email,
-          password: hashedPassword
+          password: hashedPassword,
+          phone,
+          country,
+          city,
+          highestQualification,
+          profile,
+          speciality,
+          yearsOfExperience,
+          sector,
+          workEnvironment
         },
         session
       )
@@ -92,7 +127,7 @@ export const authController = {
       const cryptoString = createCryptoString()
 
       const dateFromNow = createDateAddDaysFromNow(ExpiresInDays.Verification)
-
+      winston.info(`verification : ${cryptoString}`)
       const verification = await verificationService.create(
         {
           userId: user.id,
@@ -111,8 +146,6 @@ export const authController = {
         session
       )
 
-      const { accessToken } = jwtSign(user.id)
-
       const userMail = new UserMail()
 
       userMail.signUp({
@@ -128,7 +161,8 @@ export const authController = {
       session.endSession()
 
       return res.status(StatusCodes.OK).json({
-        data: { accessToken },
+        // data: { accessToken },
+        email: user.email,
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })

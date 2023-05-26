@@ -4,6 +4,7 @@ import { StatusCodes, ReasonPhrases } from 'http-status-codes'
 import winston from 'winston'
 
 import {
+  IBodyRequest,
   ICombinedRequest,
   IContextRequest,
   IParamsRequest,
@@ -61,23 +62,19 @@ export const userController = {
   },
 
   verificationRequest: async (
-    {
-      context: { user },
-      body: { email }
-    }: ICombinedRequest<IUserRequest, VerificationRequestPayload>,
+    { body: { email } }: IBodyRequest<VerificationRequestPayload>,
     res: Response
   ) => {
     const session = await startSession()
 
     try {
-      if (user.email !== email) {
-        const user = await userService.getByEmail(email)
-        if (user) {
-          return res.status(StatusCodes.CONFLICT).json({
-            message: ReasonPhrases.CONFLICT,
-            status: StatusCodes.CONFLICT
-          })
-        }
+      const user = await userService.getByEmail(email)
+
+      if (!user || user.verified) {
+        return res.status(StatusCodes.FORBIDDEN).json({
+          message: ReasonPhrases.FORBIDDEN,
+          status: StatusCodes.FORBIDDEN
+        })
       }
 
       session.startTransaction()
@@ -184,7 +181,7 @@ export const userController = {
       session.endSession()
 
       return res.status(StatusCodes.OK).json({
-        data: { accessToken },
+        accessToken,
         message: ReasonPhrases.OK,
         status: StatusCodes.OK
       })
