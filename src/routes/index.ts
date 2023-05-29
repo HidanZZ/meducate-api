@@ -3,6 +3,7 @@ import { Router } from 'express'
 import { auth } from './auth'
 import { users } from './users'
 import { media } from './media'
+import { webinar } from './webinar'
 
 const router: Router = Router()
 
