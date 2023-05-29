@@ -3,6 +3,7 @@ import { ParamsDictionary } from 'express-serve-static-core'
 import { Document } from 'mongoose'
 
 import { IUser } from './user'
+import { IWebinar } from './webinar'
 
 export interface IContextRequest<T> extends Omit<Request, 'context'> {
   context: T
@@ -33,4 +34,8 @@ export interface ICombinedRequest<
 export interface IUserRequest {
   user: Omit<IUser, 'id'> & Document
   accessToken: string
+}
+
+export interface IWebinarRequest {
+  webinar: Omit<IWebinar, 'id'> & Document
 }
