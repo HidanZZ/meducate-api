@@ -1,8 +1,7 @@
 import { Router } from 'express'
 
 import { authGuard } from '@/guards'
-import { mediaController } from '@/controllers'
-import { uploadSingleImageMiddleware } from '@/middlewares'
+import { webinarController } from '@/controllers'
 
 export const webinar = (router: Router): void => {
 /**
@@ -65,7 +64,6 @@ export const webinar = (router: Router): void => {
   router.post(
     '/webinar/new',
     authGuard.isAuth,
-    uploadSingleImageMiddleware,
-    mediaController.imageUpload
+    webinarController.createNewWebinar
   )
 }
