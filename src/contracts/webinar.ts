@@ -21,6 +21,6 @@ export interface IWebinar {
 
 export type CreateWebinarPayload = Omit<IWebinar, 'id'>;
 
-export type UpdateWebinarPayload = Pick<IWebinar, 'id' >
+export type UpdateWebinarPayload = Partial<IWebinar >
 
 export type WebinarModel = Model<IWebinar>
