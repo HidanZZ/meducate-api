@@ -89,16 +89,20 @@ export const authController = {
     res: Response
   ) => {
     const session = await startSession()
-    ///convert session object to json
-    const sessionJson = JSON.stringify(session.id)
-    winston.info(sessionJson)
     try {
       const isUserExist = await userService.isExistByEmail(email)
       if (isUserExist) {
-        return res.status(StatusCodes.CONFLICT).json({
-          message: ReasonPhrases.CONFLICT,
-          status: StatusCodes.CONFLICT
-        })
+        //check if user is verified
+        const user = await userService.getByEmail(email)
+        if (user?.verified) {
+          return res.status(StatusCodes.CONFLICT).json({
+            message: ReasonPhrases.CONFLICT,
+            status: StatusCodes.CONFLICT
+          })
+        } else {
+          //delete user
+          await userService.deleteById(user?.id)
+        }
       }
 
       session.startTransaction()
