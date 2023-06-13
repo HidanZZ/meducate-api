@@ -13,7 +13,6 @@ export const openai = {
       content: instruction
     }
     messages.unshift(system)
-    console.log(messages)
 
     const response = await openapi.createChatCompletion({
       model: 'gpt-3.5-turbo',
