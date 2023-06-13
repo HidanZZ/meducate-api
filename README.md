@@ -1,10 +1,4 @@
-# [express-mongodb-rest-api-typescript-boilerplate](https://github.com/watscho/express-mongodb-rest-api-boilerplate)
-
-[![](https://img.shields.io/badge/author-@watscho-blue.svg)](https://www.linkedin.com/in/watscho)
-[![](https://api.codacy.com/project/badge/Grade/f4ea86b0cf474e928d34f3723aed349e)](https://app.codacy.com/gh/watscho/express-mongodb-rest-api-boilerplate)
-[![GitHub license](https://img.shields.io/github/license/watscho/express-mongodb-rest-api-boilerplate)](https://github.com/watscho/express-mongodb-rest-api-boilerplate/blob/master/LICENSE)
-
-## Authentication from scratch `TypeScript`
+## Authentication
 
 - Sign In
 - Sign Up,
@@ -129,15 +123,6 @@ yarn prettier:write # or npm run prettier:write - with prefix --fix
 
 If you're looking for an easy-to-use tool to test your email SMTP functionality, I highly recommend using [Mailcatcher](https://mailcatcher.me/). Mailcatcher is a simple SMTP server that catches all your outgoing emails and displays them in a web interface for easy viewing.
 
-### To install [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) in [Visual Studio Code](https://code.visualstudio.com/), you can follow these steps:
-
-- Open Visual Studio Code and navigate to your project folder.
-- Press Ctrl + Shift + P (Windows) or Cmd + Shift + P (Mac) to open the Command Palette.
-- Type "Extensions: Install Extensions" and select the first option that appears.
-- In the search bar, type "Prettier" and select the first result that appears.
-- Click the "Install" button to install Prettier.
-- Repeat step 4 and 5 to install ESLint.
-
 ### API Structure
 
 ```bash
@@ -246,9 +231,3 @@ If you're looking for an easy-to-use tool to test your email SMTP functionality,
 ├── tsconfig.json
 └── yarn.lock
 ```
-
-**Note:** For any question [issues](https://github.com/watscho/express-mongodb-rest-api-boilerplate/issues)
-
-## License
-
-This project is an open-source with an [MIT License](https://github.com/watscho/express-mongodb-rest-api-boilerplate/blob/master/LICENSE)
