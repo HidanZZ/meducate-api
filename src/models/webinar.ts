@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 
-import { IWebinar, WebinarModel } from '@/contracts/webinar';
+import { IWebinar, WebinarModel } from '@/contracts/webinar'
 
 const schema = new Schema<IWebinar, WebinarModel>(
   {
@@ -16,10 +16,10 @@ const schema = new Schema<IWebinar, WebinarModel>(
       picture: String,
       company: String,
       jobTitle: String,
-      description: String,
-    },
+      description: String
+    }
   },
   { timestamps: true }
-);
+)
 
-export const Webinar = model<IWebinar, WebinarModel>('Webinar', schema);
+export const Webinar = model<IWebinar, WebinarModel>('Webinar', schema)

@@ -4,7 +4,7 @@ import { authGuard } from '@/guards'
 import { webinarController } from '@/controllers'
 
 export const webinar = (router: Router): void => {
-/**
+  /**
    * @swagger
    * /webinar/new:
    *   post:
@@ -60,7 +60,7 @@ export const webinar = (router: Router): void => {
    *         description: Bad request
    *       401:
    *         description: Unautho
-*/
+   */
   router.post(
     '/webinar/new',
     authGuard.isAuth,
@@ -123,12 +123,8 @@ export const webinar = (router: Router): void => {
    *         description: Bad request
    *       401:
    *         description: Unautho
-*/
-router.post(
-    '/webinar/edit',
-    authGuard.isAuth,
-    webinarController.editWebinar
-  )
+   */
+  router.post('/webinar/edit', authGuard.isAuth, webinarController.editWebinar)
   /**
    * @swagger
    * /webinar/delete:
@@ -139,7 +135,7 @@ router.post(
    *       - Webinar
    *     requestBody:
    *      required: false
-   *      
+   *
    *     responses:
    *       200:
    *         description: User signed in successfully
@@ -147,10 +143,6 @@ router.post(
    *         description: Bad request
    *       401:
    *         description: Unautho
-*/
-router.post(
-    '/webinar/new',
-    authGuard.isAuth,
-    webinarController.deleteWebinar
-  )
+   */
+  router.post('/webinar/new', authGuard.isAuth, webinarController.deleteWebinar)
 }

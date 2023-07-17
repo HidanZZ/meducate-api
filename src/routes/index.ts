@@ -9,7 +9,7 @@ const router: Router = Router()
 
 const routes: {
   [key: string]: (router: Router) => void
-} = { auth, users, media }
+} = { auth, users, media, webinar }
 
 for (const route in routes) {
   routes[route](router)
