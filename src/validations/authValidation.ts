@@ -7,11 +7,53 @@ import {
   ResetPasswordPayload,
   SignInPayload,
   SignUpPayload,
-  NewPasswordPayload
+  NewPasswordPayload,
+  VerificationRequestPayload
 } from '@/contracts/auth'
 import { IBodyRequest } from '@/contracts/request'
 
 export const authValidation = {
+  verificationRequest: (
+    req: IBodyRequest<VerificationRequestPayload>,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      if (!req.body.email) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: ReasonPhrases.BAD_REQUEST,
+          status: StatusCodes.BAD_REQUEST
+        })
+      }
+
+      let normalizedEmail =
+        req.body.email && validator.normalizeEmail(req.body.email)
+      if (normalizedEmail) {
+        normalizedEmail = validator.trim(normalizedEmail)
+      }
+
+      if (
+        !normalizedEmail ||
+        !validator.isEmail(normalizedEmail, { allow_utf8_local_part: false })
+      ) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+          message: ReasonPhrases.BAD_REQUEST,
+          status: StatusCodes.BAD_REQUEST
+        })
+      }
+
+      Object.assign(req.body, { email: normalizedEmail })
+
+      return next()
+    } catch (error) {
+      winston.error(error)
+
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        message: ReasonPhrases.BAD_REQUEST,
+        status: StatusCodes.BAD_REQUEST
+      })
+    }
+  },
   signIn: (
     req: IBodyRequest<SignInPayload>,
     res: Response,
@@ -134,8 +176,8 @@ export const authValidation = {
       Object.assign(req.body, { email: normalizedEmail })
 
       return next()
-    } catch (error) {
-      winston.error(error)
+    } catch (error: any) {
+      winston.error(error.message)
 
       return res.status(StatusCodes.BAD_REQUEST).json({
         message: ReasonPhrases.BAD_REQUEST,

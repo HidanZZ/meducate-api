@@ -24,7 +24,7 @@ export const authMiddleware = async (
     )
     if (isAccessTokenExpired) return next()
 
-    const user = await userService.getById(id)
+    const user = await userService.getById(id.toString())
     if (!user) return next()
 
     Object.assign(req, {

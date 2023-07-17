@@ -5,3 +5,5 @@ public
 .DS_Store
 storage/public
 yarn.lock
+src/routes/storage
+coverage
