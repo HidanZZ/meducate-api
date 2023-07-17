@@ -2,8 +2,12 @@ import nodemailer, { Transporter } from 'nodemailer'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
 import Email from 'email-templates'
 import i18next from 'i18next'
+import { resolve } from 'path'
 
-import { joinRelativeToMainPath } from '@/utils/paths'
+// This will always be the directory where your script is running
+const currentDir = process.cwd()
+// This will always be the path to your templates, no matter where you run your script from
+const templatePath = resolve(currentDir, `./src/${process.env.MAIL_TPL_PATH}`)
 
 export abstract class Mailer {
   private transporter: Transporter<SMTPTransport.SentMessageInfo>
@@ -19,7 +23,7 @@ export abstract class Mailer {
   private initializeMailer() {
     this.mailer = new Email({
       views: {
-        root: joinRelativeToMainPath(process.env.MAIL_TPL_PATH),
+        root: templatePath,
         locals: {
           clientUrl: process.env.CLIENT_URL,
           t: i18next.t

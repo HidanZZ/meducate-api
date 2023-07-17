@@ -26,64 +26,7 @@ export const users = (router: Router): void => {
    *         description: Unauthorized
    */
   router.get('/me', authGuard.isAuth, userController.me)
-  /**
-   * @swagger
-   * /user/verification/request:
-   *   post:
-   *     summary: Request user email verification
-   *     description: Requests an email verification for the authenticated user
-   *     tags:
-   *       - Users
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               email:
-   *                 type: string
-   *                 format: email
-   *             required:
-   *               - email
-   *     responses:
-   *       200:
-   *         description: Verification email sent successfully
-   *       400:
-   *         description: Bad request
-   *       401:
-   *         description: Unauthorized
-   */
-  router.post(
-    '/user/verification/request',
-    authGuard.isGuest,
-    userValidation.verificationRequest,
-    userController.verificationRequest
-  )
-  /**
-   * @swagger
-   * /user/verification/{accessToken}:
-   *   get:
-   *     summary: Verify user email
-   *     description: Verifies the user's email using the provided access token
-   *     tags:
-   *       - Users
-   *     parameters:
-   *       - in: path
-   *         name: accessToken
-   *         schema:
-   *           type: string
-   *         required: true
-   *         description: Access token from the verification email
-   *     responses:
-   *       200:
-   *         description: Email verified successfully
-   *       400:
-   *         description: Bad request
-   *       401:
-   *         description: Invalid access token
-   */
-  router.get('/user/verification/:accessToken', userController.verification)
+
   /**
    * @swagger
    * /user/update:
@@ -118,42 +61,7 @@ export const users = (router: Router): void => {
     userValidation.updateProfile,
     userController.updateProfile
   )
-  /**
-   * @swagger
-   * /user/update/email:
-   *   post:
-   *     summary: Update user email
-   *     description: Updates the authenticated user's email address
-   *     tags:
-   *       - Users
-   *     security:
-   *       - BearerAuth: []
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             properties:
-   *               email:
-   *                 type: string
-   *                 format: email
-   *             required:
-   *               - email
-   *     responses:
-   *       200:
-   *         description: User email updated successfully
-   *       400:
-   *         description: Bad request
-   *       401:
-   *         description: Unauthorized
-   */
-  router.post(
-    '/user/update/email',
-    authGuard.isAuth,
-    userValidation.updateEmail,
-    userController.updateEmail
-  )
+
   /**
    * @swagger
    * /user/update/password:

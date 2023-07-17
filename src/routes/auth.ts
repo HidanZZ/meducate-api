@@ -201,4 +201,62 @@ export const auth = (router: Router): void => {
     authValidation.newPassword,
     authController.newPassword
   )
+  /**
+   * @swagger
+   * /auth/verification/request:
+   *   post:
+   *     summary: Request user email verification
+   *     description: Requests an email verification for the authenticated user
+   *     tags:
+   *       - Users
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               email:
+   *                 type: string
+   *                 format: email
+   *             required:
+   *               - email
+   *     responses:
+   *       200:
+   *         description: Verification email sent successfully
+   *       400:
+   *         description: Bad request
+   *       401:
+   *         description: Unauthorized
+   */
+  router.post(
+    '/auth/verification/request',
+    authGuard.isGuest,
+    authValidation.verificationRequest,
+    authController.verificationRequest
+  )
+  /**
+   * @swagger
+   * /auth/verification/{accessToken}:
+   *   get:
+   *     summary: Verify user email
+   *     description: Verifies the user's email using the provided access token
+   *     tags:
+   *       - Users
+   *     parameters:
+   *       - in: path
+   *         name: accessToken
+   *         schema:
+   *           type: string
+   *         required: true
+   *         description: Access token from the verification email
+   *     responses:
+   *       200:
+   *         description: Email verified successfully
+   *       400:
+   *         description: Bad request
+   *       401:
+   *         description: Invalid access token
+   */
+  router.get('/auth/verification/:accessToken', authController.verification)
 }

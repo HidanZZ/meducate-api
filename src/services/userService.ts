@@ -58,7 +58,7 @@ export const userService = {
       verified
     }).save({ session }),
 
-  getById: (userId: ObjectId) => User.findById(userId),
+  getById: (userId: string) => User.findById(userId),
 
   getByEmail: (email: string) => User.findOne({ email }),
 
@@ -138,6 +138,8 @@ export const userService = {
 
   deleteById: (userId: ObjectId, session?: ClientSession) =>
     User.deleteOne({ user: userId }, { session }),
+  deleteByEmail: (email: string, session?: ClientSession) =>
+    User.deleteOne({ email }, { session }),
 
   addResetPasswordToUser: async (
     {

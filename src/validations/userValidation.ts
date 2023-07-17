@@ -9,53 +9,10 @@ import {
   DeleteProfilePayload,
   UpdateEmailPayload,
   UpdatePasswordPayload,
-  UpdateProfilePayload,
-  VerificationRequestPayload
+  UpdateProfilePayload
 } from '@/contracts/user'
 
 export const userValidation = {
-  verificationRequest: (
-    req: IBodyRequest<VerificationRequestPayload>,
-    res: Response,
-    next: NextFunction
-  ) => {
-    try {
-      if (!req.body.email) {
-        return res.status(StatusCodes.BAD_REQUEST).json({
-          message: ReasonPhrases.BAD_REQUEST,
-          status: StatusCodes.BAD_REQUEST
-        })
-      }
-
-      let normalizedEmail =
-        req.body.email && validator.normalizeEmail(req.body.email)
-      if (normalizedEmail) {
-        normalizedEmail = validator.trim(normalizedEmail)
-      }
-
-      if (
-        !normalizedEmail ||
-        !validator.isEmail(normalizedEmail, { allow_utf8_local_part: false })
-      ) {
-        return res.status(StatusCodes.BAD_REQUEST).json({
-          message: ReasonPhrases.BAD_REQUEST,
-          status: StatusCodes.BAD_REQUEST
-        })
-      }
-
-      Object.assign(req.body, { email: normalizedEmail })
-
-      return next()
-    } catch (error) {
-      winston.error(error)
-
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        message: ReasonPhrases.BAD_REQUEST,
-        status: StatusCodes.BAD_REQUEST
-      })
-    }
-  },
-
   updateProfile: (
     req: IBodyRequest<UpdateProfilePayload>,
     res: Response,

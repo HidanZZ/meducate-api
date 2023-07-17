@@ -23,3 +23,4 @@ export type SignUpPayload = Pick<
 export type ResetPasswordPayload = Pick<IUser, 'email'>
 
 export type NewPasswordPayload = Pick<IUser, 'password'>
+export type VerificationRequestPayload = Pick<IUser, 'email'>

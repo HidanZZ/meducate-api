@@ -16,4 +16,8 @@ for (const route in routes) {
   routes[route](router)
 }
 
+router.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 export { router }

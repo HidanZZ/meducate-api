@@ -4,7 +4,7 @@ import winston from 'winston'
 class Redis {
   private static instance: Redis
 
-  private readonly redisUri: string
+  private redisUri: string
 
   public client: RedisClientType
 
@@ -39,10 +39,19 @@ class Redis {
       winston.error(error)
     }
   }
-
+  public refreshClient(): void {
+    this.redisUri = process.env.REDIS_URI!
+    this.client = createClient({
+      url: this.redisUri
+    })
+    this.run()
+  }
+  public getRedisUri(): string {
+    return this.redisUri
+  }
   public static getInstance(): Redis {
     if (!Redis.instance) {
-      Redis.instance = new Redis(process.env.REDIS_URI)
+      Redis.instance = new Redis(process.env.REDIS_URI!)
     }
 
     return Redis.instance

@@ -8,7 +8,7 @@ export const authGuard = {
     res: Response,
     next: NextFunction
   ) => {
-    if (user) {
+    if (user && user.verified) {
       return next()
     }
 
@@ -24,44 +24,6 @@ export const authGuard = {
     next: NextFunction
   ) => {
     if (!user) {
-      return next()
-    }
-
-    return res.status(StatusCodes.FORBIDDEN).json({
-      message: ReasonPhrases.FORBIDDEN,
-      status: StatusCodes.FORBIDDEN
-    })
-  },
-
-  isVerified: (
-    {
-      context: {
-        user: { verified }
-      }
-    }: IContextRequest<IUserRequest>,
-    res: Response,
-    next: NextFunction
-  ) => {
-    if (verified) {
-      return next()
-    }
-
-    return res.status(StatusCodes.FORBIDDEN).json({
-      message: ReasonPhrases.FORBIDDEN,
-      status: StatusCodes.FORBIDDEN
-    })
-  },
-
-  isUnverfied: (
-    {
-      context: {
-        user: { verified }
-      }
-    }: IContextRequest<IUserRequest>,
-    res: Response,
-    next: NextFunction
-  ) => {
-    if (!verified) {
       return next()
     }
 
