@@ -12,9 +12,9 @@ export const medicamentController = {
   },
 
   getMedicamentByDenomination: async (req: Request, res: Response) => {
-    const { denomination } = req.params;
+    const { nomDuMedicament } = req.params;
     try {
-      const medicament = await medicamentService.getMedicamentByDenomination(denomination);
+      const medicament = await medicamentService.getMedicamentByDenomination(nomDuMedicament);
       if (!medicament) {
         return res.status(404).json({ message: 'Medicament not found' });
       }
@@ -25,9 +25,9 @@ export const medicamentController = {
   },
 
   getMedicamentByMolecule: async (req: Request, res: Response) => {
-    const { molecule } = req.params;
+    const { substanceActive } = req.params;
     try {
-      const medicament = await medicamentService.getMedicamentByMolecule(molecule);
+      const medicament = await medicamentService.getMedicamentByMolecule(substanceActive);
       if (!medicament) {
         return res.status(404).json({ message: 'Medicament not found' });
       }

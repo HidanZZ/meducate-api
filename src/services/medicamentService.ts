@@ -1,5 +1,4 @@
 import { Medicament } from '@/models/medicament';
-import { IMedicament } from '@/contracts/medicament';
 
 export const medicamentService = {
   getAllMedicaments: async () => {
@@ -11,18 +10,18 @@ export const medicamentService = {
     }
   },
 
-  getMedicamentByDenomination: async (denomination: string) => {
+  getMedicamentByDenomination: async (nomDuMedicament: string) => {
     try {
-      const medicament = await Medicament.findOne({ denomination });
+      const medicament = await Medicament.findOne({ nomDuMedicament });
       return medicament;
     } catch (error) {
       throw new Error('Error fetching medicament by denomination');
     }
   },
 
-  getMedicamentByMolecule: async (molecule: string) => {
+  getMedicamentByMolecule: async (substanceActive: string) => {
     try {
-      const medicament = await Medicament.findOne({ molecule });
+      const medicament = await Medicament.findOne({ substanceActive });
       return medicament;
     } catch (error) {
       throw new Error('Error fetching medicament by molecule');
