@@ -1,6 +1,7 @@
 import { Medicament } from '@/models/medicament';
 
 export const medicamentService = {
+
   getAllMedicaments: async () => {
     try {
       const medicaments = await Medicament.find({});
@@ -16,6 +17,19 @@ export const medicamentService = {
       return medicament;
     } catch (error) {
       throw new Error('Error fetching medicament by denomination');
+    }
+  },
+
+  getSimilarMedicamentsByDenomination: async (nomDuMedicament: string) => {
+    try {
+      const medicament = await Medicament.findOne({ nomDuMedicament });
+      if(medicament){
+        const medicaments = await Medicament.find({ substanceActive: medicament.substanceActive });
+        return medicaments;
+      }
+      return [];
+    } catch (error) {
+      throw new Error('Error fetching similar medicaments by denomination');
     }
   },
 

@@ -24,6 +24,20 @@ export const medicamentController = {
     }
   },
 
+  getSimilarMedicamentsByDenomination: async (req: Request, res: Response) => {
+    const { nomDuMedicament } = req.params;
+    try {
+      const medicaments = await medicamentService.getSimilarMedicamentsByDenomination(nomDuMedicament);
+      if (!medicaments) {
+        return res.status(404).json({ message: 'Medicament not found' });
+      }
+      return res.status(200).json(medicaments);
+    } catch (error) {
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  },
+  
+
   getMedicamentByMolecule: async (req: Request, res: Response) => {
     const { substanceActive } = req.params;
     try {
