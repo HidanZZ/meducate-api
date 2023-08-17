@@ -11,14 +11,31 @@ export const medicamentService = {
     }
   },
 
+  // medicamentService.js
+
   getMedicamentByDenomination: async (nomDuMedicament: string) => {
     try {
-      const medicament = await Medicament.findOne({ nomDuMedicament });
-      return medicament;
+      const medicaments = await Medicament.find({
+        nomDuMedicament: { $regex: `^${nomDuMedicament}`, $options: 'i' }
+      });
+      return medicaments;
     } catch (error) {
-      throw new Error('Error fetching medicament by denomination');
+      throw new Error('Error fetching medicaments by partial name');
     }
   },
+
+  getMedicamentByMolecule: async (substanceActive: string) => {
+    try {
+      const medicaments = await Medicament.find({
+        substanceActive: { $regex: `^${substanceActive}`, $options: 'i' }
+      });
+      return medicaments;
+    } catch (error) {
+      throw new Error('Error fetching medicaments by partial name');
+    }
+  },
+  
+
 
   getSimilarMedicamentsByDenomination: async (nomDuMedicament: string) => {
     try {
@@ -33,12 +50,12 @@ export const medicamentService = {
     }
   },
 
-  getMedicamentByMolecule: async (substanceActive: string) => {
-    try {
-      const medicament = await Medicament.findOne({ substanceActive });
-      return medicament;
-    } catch (error) {
-      throw new Error('Error fetching medicament by molecule');
-    }
-  },
+  // getMedicamentByMolecule: async (substanceActive: string) => {
+  //   try {
+  //     const medicament = await Medicament.findOne({ substanceActive });
+  //     return medicament;
+  //   } catch (error) {
+  //     throw new Error('Error fetching medicament by molecule');
+  //   }
+  // },
 };
