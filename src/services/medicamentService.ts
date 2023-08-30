@@ -50,12 +50,14 @@ export const medicamentService = {
     }
   },
 
-  // getMedicamentByMolecule: async (substanceActive: string) => {
-  //   try {
-  //     const medicament = await Medicament.findOne({ substanceActive });
-  //     return medicament;
-  //   } catch (error) {
-  //     throw new Error('Error fetching medicament by molecule');
-  //   }
-  // },
+
+
+  getMedicamentById : async (_id: string) => {
+    try {
+      const medicament = await Medicament.findById(_id);
+      return medicament;
+    } catch (error) {
+      throw new Error('Error fetching medicament by id');
+    }
+  },
 };

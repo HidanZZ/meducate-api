@@ -6,5 +6,6 @@ export const medicaments = (router: Router): void => {
     router.get('/medicaments/medicament/:nomDuMedicament', medicamentController.getMedicamentByDenomination);
     router.get('/medicaments/molecule/:substanceActive', medicamentController.getMedicamentByMolecule);
     router.get('/medicaments/similar/:nomDuMedicament', medicamentController.getSimilarMedicamentsByDenomination);
+    router.get('/medicaments/medicamentId/:_id', medicamentController.getMedicamentById); 
 }
 
