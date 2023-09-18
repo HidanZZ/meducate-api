@@ -2,7 +2,6 @@ import { Schema, model, Document, Model } from 'mongoose';
 import { IMedFr1 , MedFr1Model} from '@/contracts/med_fr1'
 
 const medicamentFr1Schema = new Schema<IMedFr1, MedFr1Model>({
-  
   _id: Schema.Types.ObjectId,
   cis_code: String,
   cip7: String,
