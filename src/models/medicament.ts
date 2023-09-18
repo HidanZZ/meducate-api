@@ -1,4 +1,4 @@
-import { Schema, model, Document, Model } from 'mongoose';
+import { Schema, model, models} from 'mongoose';
 import { IMedicament , MedicamentModel} from '@/contracts/medicament';
 
 const medicamentSchema = new Schema<IMedicament, MedicamentModel>({

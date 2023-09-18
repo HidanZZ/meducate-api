@@ -51,7 +51,6 @@ export const medicamentService = {
   },
 
 
-
   getMedicamentById : async (_id: string) => {
     try {
       const medicament = await Medicament.findById(_id);
