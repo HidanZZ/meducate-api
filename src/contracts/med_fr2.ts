@@ -2,18 +2,18 @@ import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr2 {
   _id?: ObjectId;
-  cis_code?: String,
-  denomination: String,
-  forme_pharmaceutique: String,
-  voies_administration: String,
-  statut_amm: String,
-  type_procedure_amm: String,
-  etat_commercialisation: String,
-  date_amm: String,
-  statut_bdm: String,
-  numero_autorisation_europeenne: String,
-  titulaires: String,
-  surveillance_renforcee: String
+  cis_code?: string;
+  denomination: string;
+  forme_pharmaceutique: string;
+  voies_administration: string;
+  statut_amm: string;
+  type_procedure_amm: string;
+  etat_commercialisation: string;
+  date_amm: string;
+  statut_bdm: string;
+  numero_autorisation_europeenne: string;
+  titulaires: string;
+  surveillance_renforcee: string;
 
 }
 

@@ -1,22 +1,22 @@
 import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr {
-  _id?: ObjectId,
-  cis_code?: String,
-  libelle_presentation: String,
-  prix_medicament: String,
-  denomination: String,
-  forme_pharmaceutique: String,
-  voies_administration: String,
-  statut_amm: String,
-  type_procedure_amm: String,
-  etat_commercialisation: String,
-  titulaires: String,
-  condition_prescription: String,
-  libelle_groupe_generique: String,
-  texte_info_secu: String,
-  dossier_has_code: String,
-  lien_avis_ct: String
+  _id?: ObjectId;
+  cis_code?: string;
+  libelle_presentation: string;
+  prix_medicament: string;
+  denomination: string;
+  forme_pharmaceutique: string;
+  voies_administration: string;
+  statut_amm: string;
+  type_procedure_amm: string;
+  etat_commercialisation: string;
+  titulaires: string;
+  condition_prescription: string;
+  libelle_groupe_generique: string;
+  texte_info_secu: string;
+  dossier_has_code: string;
+  lien_avis_ct: string;
 
 
 

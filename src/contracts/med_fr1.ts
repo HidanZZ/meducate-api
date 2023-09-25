@@ -2,17 +2,17 @@ import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr1 {
   _id?: ObjectId;
-  cis_code?: String;
-  cip7: String;
-  libelle_presentation: String;
-  statut_admin_presentation: String;
-  etat_commercialisation_presentation: String;
-  date_declaration_commercialisation: String;
-  cip13: String;
-  agrement_collectivites: String;
-  taux_remboursement: String;
-  prix_medicament: String;
-  indications_remboursement: String
+  cis_code?: string;
+  cip7: string;
+  libelle_presentation: string;
+  statut_admin_presentation: string;
+  etat_commercialisation_presentation: string;
+  date_declaration_commercialisation: string;
+  cip13: string;
+  agrement_collectivites: string;
+  taux_remboursement: string;
+  prix_medicament: string;
+  indications_remboursement: string
 
 }
 
