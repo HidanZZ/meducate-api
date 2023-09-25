@@ -54,6 +54,7 @@ export const medicamentService = {
   getMedicamentById : async (_id: string) => {
     try {
       const medicament = await Medicament.findById(_id);
+      console.log(medicament);
       return medicament;
     } catch (error) {
       throw new Error('Error fetching medicament by id');

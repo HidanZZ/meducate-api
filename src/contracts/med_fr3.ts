@@ -1,8 +1,8 @@
 import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr3 {
-  _id?: ObjectId;
-  cis_code?: string;
+  _id: ObjectId;
+  cis_code: string;
   condition_prescription: string;
 }
 

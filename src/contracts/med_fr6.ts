@@ -1,8 +1,8 @@
 import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr6 {
-  _id?: ObjectId;
-  cis_code?: string;
+  _id: ObjectId;
+  cis_code: string;
   dossier_has_code: string;
   motif_evaluation: string;
   date_avis_ct: string;

@@ -1,7 +1,7 @@
 import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr4 {
-  _id?: ObjectId;
+  _id: ObjectId;
   groupe_generique_id: string;
   libelle_groupe_generique: string;
   cis_code?: string;
