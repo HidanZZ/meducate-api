@@ -22,7 +22,11 @@ const medicamentFrSchema = new Schema<IMedFr, MedFrModel>({
     lien_avis_ct: {type: String, default: "",required: true},
     date_debut_info_secu: {type: Date, default: null, required: true},
     date_fin_info_secu: {type: Date, default: null, required: true},
-    
+    denomination_substance: {type: String, default: "",required: true},
+    designation_element_pharmaceutique: {type: String, default: "",required: true},
+    dosage_substance: {type: String, default: "",required: true},
+    ref_dosage: {type: String, default: "",required: true},
+    nature_composant: {type: String, default: "",required: true},
 
 },{ collection: 'med_fr' });
 

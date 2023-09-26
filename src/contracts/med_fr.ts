@@ -19,6 +19,11 @@ export interface IMedFr {
   lien_avis_ct: string;
   date_debut_info_secu: Date;
   date_fin_info_secu: Date;
+  designation_element_pharmaceutique: string;
+  denomination_substance: string;
+  dosage_substance: string;
+  ref_dosage: string;
+  nature_composant: string;
   _id: ObjectId;
 
 }

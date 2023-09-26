@@ -6,6 +6,7 @@ import { MedFr5 } from '@/models/med_fr5';
 import { MedFr6 } from '@/models/med_fr6';
 import { MedFr7 } from '@/models/med_fr7';
 import { MedFr8 } from '@/models/med_fr8';
+import { MedFr9 } from '@/models/med_fr9';
 import { MedFr } from '@/models/med_fr';
 
 export const medFrService = {
@@ -15,7 +16,7 @@ export const medFrService = {
       let medicament = new MedFr();
       let med2 = await MedFr2.findOne({ denomination: 
         { $regex: `${nomDuMedicament}`, $options: 'i' } });
-      let med1, med4, med3, med5, med6, med7, med8;
+      let med1, med4, med3, med5, med6, med7, med8,med9;
       if(med2){
         med1= await MedFr1.findOne({ cis_code: med2.cis_code });
         med3= await MedFr3.findOne({ cis_code: med2.cis_code });
@@ -23,6 +24,8 @@ export const medFrService = {
         med5= await MedFr5.findOne({ cis_code: med2.cis_code });
         med6= await MedFr6.findOne({ cis_code: med2.cis_code });
         med7= await MedFr7.findOne({ cis_code: med2.cis_code });
+        med9= await MedFr9.findOne({ cis_code: med2.cis_code });
+
         
         medicament._id = med2._id;
         medicament.cis_code = med2.cis_code;
@@ -33,6 +36,7 @@ export const medFrService = {
         medicament.type_procedure_amm = med2.type_procedure_amm;
         medicament.etat_commercialisation = med2.etat_commercialisation;
         medicament.titulaires= med2.titulaires; 
+        
       }
       if(med1){
         medicament.libelle_presentation = med1.libelle_presentation;
