@@ -7,6 +7,7 @@ const medicamentFrSchema = new Schema<IMedFr, MedFrModel>({
     cis_code: {type: String, default: "",required: true},
     libelle_presentation: {type: String, default: "",required: true},
     prix_medicament: {type: String, default: "",required: true},
+    taux_remboursement: {type: String, default: "",required: true},
     denomination: {type: String, default: "",required: true},
     forme_pharmaceutique: {type: String, default: "",required: true},
     voies_administration: {type: String, default: "",required: true},
@@ -18,7 +19,10 @@ const medicamentFrSchema = new Schema<IMedFr, MedFrModel>({
     libelle_groupe_generique: {type: String, default: "",required: true},
     texte_info_secu: {type: String, default: "",required: true},
     dossier_has_code: {type: String, default: "",required: true},
-    lien_avis_ct: {type: String, default: "",required: true}
+    lien_avis_ct: {type: String, default: "",required: true},
+    date_debut_info_secu: {type: Date, default: null, required: true},
+    date_fin_info_secu: {type: Date, default: null, required: true},
+    
 
 },{ collection: 'med_fr' });
 

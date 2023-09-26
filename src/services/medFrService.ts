@@ -46,6 +46,8 @@ export const medFrService = {
       }
       if(med7){
         medicament.texte_info_secu = med7.texte_info_secu;
+        medicament.date_debut_info_secu = med7.date_debut_info_secu;
+        
       }
       if(med6){
         med8 = await MedFr8.findOne({ dossier_has_code : med6.dossier_has_code });
@@ -89,6 +91,7 @@ export const medFrService = {
       if(med1){
         medicament.libelle_presentation = med1.libelle_presentation;
         medicament.prix_medicament = med1.prix_medicament;
+        medicament.taux_remboursement = med1.taux_remboursement;
       }
       if(med3){
         medicament.condition_prescription = med3.condition_prescription;
