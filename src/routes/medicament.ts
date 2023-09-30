@@ -11,5 +11,6 @@ export const medicaments = (router: Router): void => {
     router.get('/medicaments/:_id', medicamentController.getMedicamentById); 
     router.get('/medicaments/medFr/:nomDuMedicament', medFrController.getMedicamentByDenomination);
     router.get('/medicaments/medFr/id/:_id', medFrController.getMedicamentById);
+    router.get('/medicaments/medFr/molecule/:molecule', medFrController.getMedicamentByMolecule);
 }
 

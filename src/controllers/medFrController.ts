@@ -23,6 +23,15 @@ export const medFrController = {
       return res.status(500).json({ message: 'Internal server error' });
     }
   },  
+  getMedicamentByMolecule: async (req: Request, res: Response) => {
+    const { molecule } = req.params;
+    try {
+      const medicament = await medFrService.getMedicamentByMolecule(molecule);
+      return res.status(200).json(medicament);
+    } catch (error) {
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  },  
 
   
 };
