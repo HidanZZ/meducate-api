@@ -60,7 +60,6 @@ export const medFrService = {
           medicament.lien_avis_ct = med8.lien_avis_ct;
         }
       }
-    
       console.log(medicament);
       return medicament;
     } catch (error) {
