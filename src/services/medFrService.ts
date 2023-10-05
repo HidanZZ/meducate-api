@@ -6,6 +6,7 @@ import { MedFr5 } from '@/models/med_fr5';
 import { MedFr6 } from '@/models/med_fr6';
 import { MedFr7 } from '@/models/med_fr7';
 import { MedFr8 } from '@/models/med_fr8';
+import { MedFr9 } from '@/models/med_fr9';
 import { MedFr } from '@/models/med_fr';
 import { MedFr9 } from '@/models/med_fr9';
 import { IMedFr2 } from '@/contracts/med_fr2';
@@ -155,6 +156,53 @@ export const medFrService = {
       let medicament = new MedFr();
       let med2 = await MedFr2.findOne({ denomination: 
         { $regex: `${nomDuMedicament}`, $options: 'i' } });
+<<<<<<<<< Temporary merge branch 1
+      let med1, med4, med3, med5, med6, med7, med8,med9;
+      if(med2){
+        med1= await MedFr1.findOne({ cis_code: med2.cis_code });
+        med3= await MedFr3.findOne({ cis_code: med2.cis_code });
+        med4= await MedFr4.findOne({ cis_code: med2.cis_code });
+        med5= await MedFr5.findOne({ cis_code: med2.cis_code });
+        med6= await MedFr6.findOne({ cis_code: med2.cis_code });
+        med7= await MedFr7.findOne({ cis_code: med2.cis_code });
+        med9= await MedFr9.findOne({ cis_code: med2.cis_code });
+
+        
+        medicament._id = med2._id;
+        medicament.cis_code = med2.cis_code;
+        medicament.denomination = med2.denomination;
+        medicament.forme_pharmaceutique = med2.forme_pharmaceutique;
+        medicament.voies_administration = med2.voies_administration;
+        medicament.statut_amm = med2.statut_amm;
+        medicament.type_procedure_amm = med2.type_procedure_amm;
+        medicament.etat_commercialisation = med2.etat_commercialisation;
+        medicament.titulaires= med2.titulaires; 
+        
+      }
+      if(med1){
+        medicament.libelle_presentation = med1.libelle_presentation;
+        medicament.prix_medicament = med1.prix_medicament;
+      }
+      if(med3){
+        medicament.condition_prescription = med3.condition_prescription;
+      }
+      if(med4){
+        medicament.libelle_groupe_generique = med4.libelle_groupe_generique;
+      }
+      if(med7){
+        medicament.texte_info_secu = med7.texte_info_secu;
+        medicament.date_debut_info_secu = med7.date_debut_info_secu;
+        
+      }
+      if(med6){
+        med8 = await MedFr8.findOne({ dossier_has_code : med6.dossier_has_code });
+        medicament.dossier_has_code = med6.dossier_has_code;
+        if(med8){
+          medicament.lien_avis_ct = med8.lien_avis_ct;
+        }
+      }
+    
+=========
       let med1, med4, med3, med5, med6, med7, med8;
       // if(med2){
       //   med1= await MedFr1.findOne({ cis_code: med2.cis_code });
@@ -198,6 +246,7 @@ export const medFrService = {
         medicament = await medFrService.helper(med2);
       }
       
+>>>>>>>>> Temporary merge branch 2
       console.log(medicament);
       return medicament;
     } catch (error) {
@@ -219,6 +268,38 @@ export const medFrService = {
       //   med6= await MedFr6.findOne({ cis_code: med2.cis_code });
       //   med7= await MedFr7.findOne({ cis_code: med2.cis_code });
         
+<<<<<<<<< Temporary merge branch 1
+        medicament._id = med2._id;
+        medicament.cis_code = med2.cis_code;
+        medicament.denomination = med2.denomination;
+        medicament.forme_pharmaceutique = med2.forme_pharmaceutique;
+        medicament.voies_administration = med2.voies_administration;
+        medicament.statut_amm = med2.statut_amm;
+        medicament.type_procedure_amm = med2.type_procedure_amm;
+        medicament.etat_commercialisation = med2.etat_commercialisation;
+        medicament.titulaires= med2.titulaires; 
+      }
+      if(med1){
+        medicament.libelle_presentation = med1.libelle_presentation;
+        medicament.prix_medicament = med1.prix_medicament;
+        medicament.taux_remboursement = med1.taux_remboursement;
+      }
+      if(med3){
+        medicament.condition_prescription = med3.condition_prescription;
+      }
+      if(med4){
+        medicament.libelle_groupe_generique = med4.libelle_groupe_generique;
+      }
+      if(med7){
+        medicament.texte_info_secu = med7.texte_info_secu;
+      }
+      if(med6){
+        med8 = await MedFr8.findOne({ dossier_has_code : med6.dossier_has_code });
+        medicament.dossier_has_code = med6.dossier_has_code;
+        if(med8){
+          medicament.lien_avis_ct = med8.lien_avis_ct;
+        }
+=========
       //   medicament._id = med2._id;
       //   medicament.cis_code = med2.cis_code;
       //   medicament.denomination = med2.denomination;
@@ -267,6 +348,7 @@ export const medFrService = {
       // }
       if(med2){
         medicament = await medFrService.helper(med2);
+>>>>>>>>> Temporary merge branch 2
       }
       console.log(medicament);
       return medicament;
@@ -294,5 +376,6 @@ export const medFrService = {
 }
 
   
+
 
 

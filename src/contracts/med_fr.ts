@@ -8,6 +8,7 @@ export interface IMedFr {
   date_declaration_commercialisation: string; 
   taux_remboursement: string;
   prix_medicament: string;
+  taux_remboursement: string;
   denomination: string;
   forme_pharmaceutique: string;
   voies_administration: string;
@@ -30,12 +31,21 @@ export interface IMedFr {
   texte_info_secu: string;
   dossier_has_code: string;
   lien_avis_ct: string;
+<<<<<<<<< Temporary merge branch 1
+  date_debut_info_secu: Date;
+  date_fin_info_secu: Date;
+=========
+>>>>>>>>> Temporary merge branch 2
   designation_element_pharmaceutique: string;
   denomination_substance: string;
   dosage_substance: string;
   ref_dosage: string;
   nature_composant: string;
+<<<<<<<<< Temporary merge branch 1
   _id: ObjectId;
+=========
+>>>>>>>>> Temporary merge branch 2
+
 }
 
 export type MedFrModel = Model<IMedFr, unknown, unknown>
