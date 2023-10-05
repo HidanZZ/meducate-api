@@ -9,4 +9,4 @@ const medicamentFr7Schema = new Schema<IMedFr7, MedFr7Model>({
   texte_info_secu: String
 },{ collection: 'med_fr7' });
 
-export const MedFr7 = model<IMedFr7>('MedFr7', medicamentFr7Schema);
+export const MedFr7 = model<IMedFr7>('MedFr7', medicamentFr7Schema);  

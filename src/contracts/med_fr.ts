@@ -1,7 +1,6 @@
 import { Model ,ObjectId } from 'mongoose'
 
 export interface IMedFr {
-  _id: ObjectId;
   cis_code: string;
   libelle_presentation: string;
   statut_admin_presentation: string;
@@ -36,7 +35,7 @@ export interface IMedFr {
   dosage_substance: string;
   ref_dosage: string;
   nature_composant: string;
-
+  _id: ObjectId;
 }
 
 export type MedFrModel = Model<IMedFr, unknown, unknown>
